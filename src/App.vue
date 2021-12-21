@@ -1,27 +1,41 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <main>
+    <h1>Ricks API</h1>
+    <RickCards :ricks="ricks" />
+  </main>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+import { defineComponent } from "vue";
+import { fetchRickData } from "./services/charactersDB";
+import { RickType } from "./types/charactersTypes.interface";
+import RickCards from "./components/RickCards.vue"
 
 export default defineComponent({
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
+    RickCards,
+  },
+  data() {
+    return {
+      ricks: [] as unknown as RickType,
+    };
+  },
+  async created() {
+    await this.fetchRicks();
+  },
+  methods: {
+    async fetchRicks(): Promise<void> {
+      const rickData = await fetchRickData();
+      this.ricks = rickData;
+      console.log(this.ricks);
+    },
+  },
 });
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
