@@ -1,6 +1,6 @@
 <template>
-  <section>
-    <div :key="rick.id" v-for="rick in ricks">
+  <section class="rick-list">
+    <div class="rick-list__item" :key="rick.id" v-for="rick in ricks">
       <RickCard :rick="rick"/>
     </div>
   </section>
@@ -23,3 +23,21 @@ export default defineComponent({
 });
 
 </script>
+
+<style scoped>
+
+.rick-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.rick-list__item {
+  width: 75%;
+  max-width: 1024px;
+  height: 25vh;
+  margin: 0.5rem;
+}
+</style>
