@@ -3,14 +3,14 @@
     <NavBar v-model="searchTerm" @update:modelValue="handleSearch" />
     <h1 class="main__header">Ricks API</h1>
     <h2>API by rickandmortyapi.com</h2>
-    <RickCards :ricks="ricks" :searchTerm="searchTerm"/>
+    <RickCards :searchedRicks="searchedRicks" />
   </main>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 import { fetchRickData } from "./services/charactersDB";
-import { RickType } from "./types/charactersTypes.interface";
+import { Results } from "./types/rickTypes.interface";
 import RickCards from "./components/RickCards.vue";
 import NavBar from "./components/NavBar.vue";
 
@@ -22,8 +22,9 @@ export default defineComponent({
   },
   data() {
     return {
-      ricks: [] as unknown as RickType,
+      ricks: {} as Results,
       searchTerm: "",
+      searchedRicks: {} as Results
     };
   },
   async created() {
@@ -33,12 +34,19 @@ export default defineComponent({
     async fetchRicks(): Promise<void> {
       const rickData = await fetchRickData();
       this.ricks = rickData;
-      // console.log(rickData);
+      this.searchedRicks = {...this.ricks}
+      console.log(rickData);
     },
     handleSearch() {
-      const searchText = this.searchTerm;
-      console.log(searchText);
-      console.log(this.$data.ricks.id)
+      const searchText = this.searchTerm.toLowerCase();
+      const rickResults = this.ricks.results;
+      let filteredRicks = [];
+      if (rickResults && searchText.length > 0) {
+        filteredRicks = rickResults.filter((rick) => {
+          return rick.name.toLowerCase().includes(searchText);
+        });
+        this.searchedRicks.results = filteredRicks;
+      }
     },
   },
 });

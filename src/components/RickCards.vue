@@ -1,19 +1,20 @@
 <template>
   <section class="rick-list">
-    <div class="rick-list__item" :key="rick.id" v-for="rick in ricks">
+    <div class="rick-list__item" :key="rick.id" v-for="rick in searchedRicks.results">
       <RickCard :rick="rick"/>
     </div>
   </section>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { Results } from "@/types/rickTypes.interface";
+import { defineComponent, PropType } from "vue";
 import RickCard from "./RickCard.vue";
 
 export default defineComponent({
   name: "RickCards",
   props: {
-    ricks: Array,
+    searchedRicks: Object as PropType<Results>,
     
   },
   components: {
