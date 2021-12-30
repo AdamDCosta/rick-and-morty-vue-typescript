@@ -3,7 +3,7 @@
     <NavBar v-model="searchTerm" @update:modelValue="handleSearch" />
     <h1 class="main__header">Ricks API</h1>
     <h2>API by rickandmortyapi.com</h2>
-    <RickCards :ricks="ricks" />
+    <RickCards :ricks="ricks" :searchTerm="searchTerm"/>
   </main>
 </template>
 
@@ -33,14 +33,12 @@ export default defineComponent({
     async fetchRicks(): Promise<void> {
       const rickData = await fetchRickData();
       this.ricks = rickData;
-      console.log(rickData);
+      // console.log(rickData);
     },
     handleSearch() {
       const searchText = this.searchTerm;
       console.log(searchText);
-      
-      
-      
+      console.log(this.$data.ricks.id)
     },
   },
 });

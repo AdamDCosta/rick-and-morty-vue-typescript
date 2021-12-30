@@ -13,7 +13,8 @@ import RickCard from "./RickCard.vue";
 export default defineComponent({
   name: "RickCards",
   props: {
-    ricks: Array
+    ricks: Array,
+    
   },
   components: {
     RickCard
