@@ -10,7 +10,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { fetchRickData } from "./services/charactersDB";
-import { Results } from "./types/rickTypes.interface";
+import { Result, Results } from "./types/rickTypes.interface";
 import RickCards from "./components/RickCards.vue";
 import NavBar from "./components/NavBar.vue";
 
@@ -37,10 +37,10 @@ export default defineComponent({
       this.searchedRicks = {...this.ricks}
       console.log(rickData);
     },
-    handleSearch() {
+    handleSearch(): void {
       const searchText = this.searchTerm.toLowerCase();
       const rickResults = this.ricks.results;
-      let filteredRicks = [];
+      let filteredRicks: Result[] = [];
       if (rickResults && searchText.length > 0) {
         filteredRicks = rickResults.filter((rick) => {
           return rick.name.toLowerCase().includes(searchText);
