@@ -1,5 +1,14 @@
 # rick-and-morty-api
 
+## to do
+
+- store fetch to localStorage
+- add dead or alive filter
+- add dynamic styles to character status
+- router
+- login
+- testing
+
 ## Project setup
 ```
 npm install
