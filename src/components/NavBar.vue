@@ -1,11 +1,10 @@
 <template>
   <nav class="nav">
     <label for="search">Search Ricks...</label>
-    <input
-      type="text"
-      name="search"
-      v-model="searchTerm"
-    />
+    <input type="text" name="search" v-model="searchTerm" />
+    <label for="status">Dead Ricks</label>
+    <input type="checkbox" name="status" :checked="checked"
+    @change="$emit('update:deadRicks', $event.target.checked)" />
   </nav>
 </template>
 
@@ -16,17 +15,18 @@ export default defineComponent({
   name: "NavBar",
   props: {
     modelValue: String,
+    checked: Boolean
   },
   computed: {
     searchTerm: {
       get() {
-        return this.modelValue
+        return this.modelValue;
       },
       set(value: string) {
-        this.$emit('update:modelValue', value)
-      }
-    }
-  }
+        this.$emit("update:modelValue", value);
+      },
+    },
+  },
 });
 </script>
 
@@ -40,11 +40,15 @@ export default defineComponent({
 }
 
 input {
-  margin-left: 0.2rem;
+  margin-left: 0.4rem;
   border-radius: 5px;
   border: none;
   color: #090d18;
   background-color: #f8f8f8;
   padding: 0.2rem;
+}
+
+label {
+  margin-left: 0.4rem;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <main class="main">
-    <NavBar v-model="searchTerm" @update:modelValue="handleSearch" />
+    <NavBar v-model="searchTerm" @update:modelValue="handleSearch" v-model:checked="deadFilter" @update:checked="handleDeadFilter"/>
     <h1 class="main__header">Ricks API</h1>
     <h2>API by rickandmortyapi.com</h2>
     <RickCards :searchedRicks="searchedRicks" />
@@ -24,7 +24,8 @@ export default defineComponent({
     return {
       ricks: {} as Results,
       searchTerm: "",
-      searchedRicks: {} as Results
+      searchedRicks: {} as Results,
+      deadFilter: false
     };
   },
   async created() {
@@ -48,6 +49,11 @@ export default defineComponent({
         this.searchedRicks.results = filteredRicks;
       }
     },
+    handleDeadFilter(): void {
+      this.deadFilter = !this.deadFilter
+      console.log("filter: " + this.deadFilter)
+
+    }
   },
 });
 </script>
