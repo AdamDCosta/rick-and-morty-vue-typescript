@@ -5,7 +5,9 @@
     </figure>
     <div class="rick-card__text">
       <h2>{{ rick.name.toUpperCase() }}</h2>
-      <h3>Status: {{ rick.status }}</h3>
+      <h3>
+        Status: <span :class="statusClass">{{ rick.status }}</span>
+      </h3>
       <h3>Species: {{ rick.species }}</h3>
       <h3>Last Known Location:</h3>
       <h4>{{ rick.location.name }}</h4>
@@ -16,18 +18,27 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 
-
 export default defineComponent({
   name: "RickCard",
   props: {
     rick: Object,
+  },
+  computed: {
+    statusClass(): string {
+      if (this.rick?.status === "Alive") {
+        return "rick-card__alive";
+      }
+      if (this.rick?.status === "Dead") {
+        return "rick-card__dead";
+      }
+      return "rick-card__unknown";
+    },
   },
 });
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
 .rick-card {
   display: flex;
   align-items: center;
@@ -59,6 +70,20 @@ img {
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between
+  justify-content: space-between;
+  font-weight: 200;
+  opacity: 90%;
+}
+
+.rick-card__alive {
+  color: rgb(51, 214, 51);
+}
+
+.rick-card__dead {
+  color: rgb(252, 46, 46);
+}
+
+.rick-card__unknown {
+  color: rgb(230, 168, 36);
 }
 </style>
