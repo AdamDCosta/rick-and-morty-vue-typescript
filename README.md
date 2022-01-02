@@ -6,6 +6,8 @@
 - add dead or alive filter
 - add dynamic styles to character status
 - router
+- fetch all pages
+- restrict number of results displayed at once - have some kind of pagination to view more
 - login
 - testing
 

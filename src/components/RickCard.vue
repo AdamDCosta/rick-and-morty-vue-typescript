@@ -16,12 +16,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { Result } from "@/types/rickTypes.interface";
+import { defineComponent, PropType } from "vue";
 
 export default defineComponent({
   name: "RickCard",
   props: {
-    rick: Object,
+    rick: Object as PropType<Result>,
   },
   computed: {
     statusClass(): string {
