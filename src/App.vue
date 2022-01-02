@@ -1,6 +1,10 @@
 <template>
   <main class="main">
-    <NavBar v-model="searchTerm" @update:modelValue="handleSearch" v-model:checked="deadFilter" @update:checked="handleDeadFilter"/>
+    <NavBar
+      v-model="searchTerm"
+      @update:modelValue="handleSearch"
+      :checked="handleDeadFilter"
+    />
     <h1 class="main__header">Ricks API</h1>
     <h2>API by rickandmortyapi.com</h2>
     <RickCards :searchedRicks="searchedRicks" />
@@ -25,7 +29,7 @@ export default defineComponent({
       ricks: {} as Results,
       searchTerm: "",
       searchedRicks: {} as Results,
-      deadFilter: false
+      deadFilter: false,
     };
   },
   async created() {
@@ -35,7 +39,7 @@ export default defineComponent({
     async fetchRicks(): Promise<void> {
       const rickData = await fetchRickData();
       this.ricks = rickData;
-      this.searchedRicks = {...this.ricks}
+      this.searchedRicks = { ...this.ricks };
       console.log(rickData);
     },
     handleSearch(): void {
@@ -50,10 +54,18 @@ export default defineComponent({
       }
     },
     handleDeadFilter(): void {
-      this.deadFilter = !this.deadFilter
-      console.log("filter: " + this.deadFilter)
-
-    }
+      this.deadFilter = !this.deadFilter;
+      const rickResults = this.ricks.results;
+      let filteredRicks: Result[] = [];
+      if (rickResults && this.deadFilter) {
+        filteredRicks = rickResults.filter((rick) => {
+          return rick.status === "Dead";
+        });
+        this.searchedRicks.results = filteredRicks;
+      } else {
+        this.searchedRicks.results = rickResults;
+      }
+    },
   },
 });
 </script>

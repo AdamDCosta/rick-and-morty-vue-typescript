@@ -3,8 +3,7 @@
     <label for="search">Search Ricks...</label>
     <input type="text" name="search" v-model="searchTerm" />
     <label for="status">Dead Ricks</label>
-    <input type="checkbox" name="status" :checked="checked"
-    @change="$emit('update:deadRicks', $event.target.checked)" />
+    <input type="checkbox" name="status" @change="checked" />
   </nav>
 </template>
 
@@ -15,7 +14,7 @@ export default defineComponent({
   name: "NavBar",
   props: {
     modelValue: String,
-    checked: Boolean
+    checked: Function,
   },
   computed: {
     searchTerm: {
