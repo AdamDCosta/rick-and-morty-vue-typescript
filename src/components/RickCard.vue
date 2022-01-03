@@ -42,7 +42,7 @@ export default defineComponent({
 <style scoped>
 .rick-card {
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   justify-content: space-between;
   height: 100%;
   margin: 10px;
