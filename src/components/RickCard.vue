@@ -61,7 +61,11 @@ export default defineComponent({
 }
 
 img {
+  max-width: 100%;
   max-height: 100%;
+  object-fit: cover;
+  height: auto;
+  width: auto;
   border-radius: 7px;
   overflow: hidden;
 }

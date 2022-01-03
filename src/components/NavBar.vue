@@ -33,6 +33,7 @@ export default defineComponent({
 .nav {
   height: 5vh;
   width: 100%;
+  max-width: 1024px;
   display: flex;
   align-items: center;
   background-color: transparent;

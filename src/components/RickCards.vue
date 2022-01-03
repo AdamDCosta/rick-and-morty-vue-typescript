@@ -24,6 +24,11 @@ export default defineComponent({
     },
 });
 
+// split into pages
+// 20 results at a time
+// splice searchedRicks
+// variables: numberOfResultsToDisplay
+
 </script>
 
 <style scoped>
@@ -33,14 +38,31 @@ export default defineComponent({
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  width: 100%;
+  width: 90%;
+  max-width: 1024px;
 }
 
 .rick-list__item {
   width: 75%;
-  max-width: 1024px;
+  max-width: 600px;
   height: 25vh;
   margin: 0.5rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .rick-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .rick-list__item {
+    width: 95%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
 }
 
 
