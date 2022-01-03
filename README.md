@@ -1,15 +1,17 @@
 # rick-and-morty-api
 
-## to do
+I built this project to try and learn how to use Vue JS with Typescript. I used the Rick and Morty API - rickandmortyapi.com. I used the VS Code extension 'Paste JSON as Code' to help type the fetch response.
 
-- store fetch to localStorage
-- add dead or alive filter
-- add dynamic styles to character status
-- router
-- fetch all pages
-- restrict number of results displayed at once - have some kind of pagination to view more
-- login
-- testing
+The project fetches all the Rick characters from the series and includes a search bar to search by name and filters for the status of the character.
+
+## Tech Stack
+
+- Vue JS (Vue 3)
+- Typescript
+- CSS
+
+![Landing page](src\assets\images\landing-page.png)
+
 
 ## Project setup
 ```
@@ -26,10 +28,7 @@ npm run serve
 npm run build
 ```
 
-### Lints and fixes files
-```
-npm run lint
-```
+## to do
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- restrict number of results displayed at once - have some kind of pagination to view more
+- testing
