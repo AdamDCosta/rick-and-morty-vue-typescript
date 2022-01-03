@@ -37,7 +37,7 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   width: 90%;
   max-width: 1024px;
 }
@@ -58,6 +58,7 @@ export default defineComponent({
 
   .rick-list__item {
     width: 95%;
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: center;

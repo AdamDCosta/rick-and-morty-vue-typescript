@@ -4,6 +4,8 @@
     <input type="text" name="search" v-model="searchTerm" />
     <label for="status">Dead Ricks</label>
     <input type="checkbox" name="status" @change="checked" />
+    <label for="status">Alive Ricks</label>
+    <input type="checkbox" name="status" @change="aliveCheck" />
   </nav>
 </template>
 
@@ -15,6 +17,7 @@ export default defineComponent({
   props: {
     modelValue: String,
     checked: Function,
+    aliveCheck: Function
   },
   computed: {
     searchTerm: {

@@ -4,6 +4,7 @@
       v-model="searchTerm"
       @update:modelValue="handleSearch"
       :checked="handleDeadFilter"
+      :aliveCheck="handleAliveFilter"
     />
     <h1 class="main__header">Ricks API</h1>
     <h2>API by rickandmortyapi.com</h2>
@@ -30,6 +31,7 @@ export default defineComponent({
       searchTerm: "",
       searchedRicks: {} as Results,
       deadFilter: false,
+      aliveFilter: false,
     };
   },
   async created() {
@@ -66,6 +68,19 @@ export default defineComponent({
         this.searchedRicks.results = rickResults;
       }
     },
+    handleAliveFilter(): void {
+      this.aliveFilter = !this.aliveFilter;
+      const rickResults = this.ricks.results;
+      let aliveRicks: Result[] = [];
+      if (rickResults && this.aliveFilter) {
+        aliveRicks = rickResults.filter((rick) => {
+          return rick.status === "Alive";
+        });
+        this.searchedRicks.results = aliveRicks;
+      } else {
+        this.searchedRicks.results = rickResults;
+      }
+    },
   },
 });
 </script>
@@ -76,7 +91,7 @@ export default defineComponent({
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   background-color: #090d18;
   padding: 0.5rem;
