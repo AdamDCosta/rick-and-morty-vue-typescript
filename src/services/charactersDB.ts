@@ -18,3 +18,8 @@ export const fetchRickData = async (): Promise<Results> => {
 
   return ricksObject;
 };
+
+// if (rickData.info.next !== null)
+// fetch rickData.info.next
+// const nextPageOfResults
+// ricksObject.results.push()
