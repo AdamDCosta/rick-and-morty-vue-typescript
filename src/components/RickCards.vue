@@ -42,4 +42,6 @@ export default defineComponent({
   height: 25vh;
   margin: 0.5rem;
 }
+
+
 </style>

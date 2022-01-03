@@ -72,8 +72,10 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.rick-card__text h3, .rick-card__text h4 {
   font-weight: 200;
-  opacity: 90%;
 }
 
 .rick-card__alive {
