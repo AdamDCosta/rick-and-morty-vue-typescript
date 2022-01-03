@@ -10,7 +10,7 @@ The project fetches all the Rick characters from the series and includes a searc
 - Typescript
 - CSS
 
-![Landing page](src\assets\images\landing-page.png)
+![Landing page](https://github.com/AdamDCosta/rick-and-morty-vue-typescript/blob/main/src/assets/images/landing-page.png)
 
 
 ## Project setup
